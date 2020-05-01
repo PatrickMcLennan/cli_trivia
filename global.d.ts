@@ -20,11 +20,11 @@ declare interface IQuestion {
   heading: string;
   userAnswer?: number | string | boolean;
   correctAnswer: number;
-  game: IStats;
+  game: IGame;
   type: string;
 }
 
-declare interface IStats {
+declare interface IGame {
   name: string;
   correct: number;
   incorrect: number;

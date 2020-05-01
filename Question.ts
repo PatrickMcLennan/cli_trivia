@@ -3,6 +3,7 @@ import chalk from "chalk";
 import align from "align-text";
 import prompts from "prompts";
 import Logger from "./Logger";
+import Game from "./Game";
 
 const { clear, log } = console;
 
@@ -12,7 +13,7 @@ class Question {
   public heading: string;
   public userAnswer: number | string | boolean;
   public correctAnswer: number;
-  public game: IStats;
+  public game: Game;
   public type: string;
 
   constructor({ ascii, question, heading, correctAnswer, game, type }: IQuestion) {
@@ -21,7 +22,7 @@ class Question {
     this.heading = heading;
     this.userAnswer = 0;
     this.correctAnswer = correctAnswer;
-    this.game = game;
+    this.game = new Game();
     this.type = type;
   }
 
@@ -64,9 +65,10 @@ class Question {
   }
 
   validate() {
-    if (this.question === `First Name: `) {
-      this.game.name = this.userAnswer;
-    }
+    return null;
+    // if (this.question === `First Name: `) {
+    //   this.game.name = this.userAnswer;
+    // }
   }
 }
 

@@ -1,16 +1,15 @@
+import Game from "./Game";
+import figlet from "figlet";
 import Logger from "./Logger";
-import Stats from "./Stats";
-
-import * as F from "./functions";
-import chalk from "chalk";
 import prompts from "prompts";
-import Question from "./Question";
 
-new Question({
-  ascii: "CLI Trivia",
-  question: "First Name: ",
-  heading: "Enter a name",
-  correctAnswer: 0,
-  game: new Stats(""),
-  type: "text",
-}).ask();
+const NewGame: Game = new Game();
+
+console.clear();
+console.log(figlet.textSync(`CLI Trivia`));
+
+prompts({
+  type: `text`,
+  name: `name`,
+  message: `First Name: `,
+});

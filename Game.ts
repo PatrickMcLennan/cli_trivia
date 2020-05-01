@@ -1,15 +1,15 @@
 import axios, { AxiosResponse } from "axios";
 import Logger from "./Logger";
 
-class Stats {
+class Game {
   public name: string;
   public correct: number;
   public incorrect: number;
   public questions: IAxiosQuestion[];
   public round: number;
 
-  constructor(name: string) {
-    this.name = name;
+  constructor() {
+    this.name = '';
     this.correct = 0;
     this.incorrect = 0;
     this.questions = [];
@@ -18,6 +18,10 @@ class Stats {
 
   addRound() {
     return (this.round += 1);
+  }
+
+  changeScore(success: boolean) {
+    return success ? (this.correct += 1) : (this.incorrect += 1);
   }
 
   refillQuestions() {
@@ -37,9 +41,6 @@ class Stats {
       .catch((error: Error) => new Logger(error).error());
   }
 
-  changeScore(success: boolean) {
-    return success ? (this.correct += 1) : (this.incorrect += 1);
-  }
 }
 
-export default Stats;
+export default Game;
